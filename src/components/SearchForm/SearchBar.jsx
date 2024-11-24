@@ -7,7 +7,7 @@ const SearchBar = ({ onSearch }) => {
     if (!values.search) {
       return alert("Please fill in the field");
     } else {
-      onSearch = values.search;
+      onSearch(values.search);
       console.log(onSearch);
     }
     actions.resetForm();
