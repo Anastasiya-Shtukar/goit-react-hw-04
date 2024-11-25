@@ -1,14 +1,14 @@
 import css from "./SearchForm.module.css";
 import { Form, Formik, Field } from "formik";
 import { CiSearch } from "react-icons/ci";
+import toast, { Toaster } from "react-hot-toast";
 
 const SearchBar = ({ onSearch }) => {
   const handleSubmit = (values, actions) => {
     if (!values.search) {
-      return alert("Please fill in the field");
+      return toast.error("Please fill in the field");
     } else {
       onSearch(values.search);
-      console.log(onSearch);
     }
     actions.resetForm();
   };
@@ -21,6 +21,7 @@ const SearchBar = ({ onSearch }) => {
             <CiSearch />
           </button>
           <Field type="text" name="search" className={css.input} />
+          <Toaster />
         </Form>
       </Formik>
     </div>
