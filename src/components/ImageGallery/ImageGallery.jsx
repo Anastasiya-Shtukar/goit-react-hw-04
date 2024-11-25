@@ -10,7 +10,7 @@ const ImageGallery = ({ images, openModal }) => {
             <ImageCard
               url={image.urls.small}
               alt={image.alt_description}
-              openMadal={openModal}
+              openModal={openModal}
               image={image}
             />
           </li>

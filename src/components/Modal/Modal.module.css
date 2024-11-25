@@ -1,0 +1,54 @@
+.modal {
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modalContent {
+  width: 950px;
+  height: 650px;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: none;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  cursor: pointer;
+  background-color: inherit;
+  color: white;
+}
+
+.button:hover {
+  color: rgb(214, 36, 30);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.image {
+  width: 950px;
+  height: 650px;
+  object-fit: cover;
+  border-radius: 3px;
+  box-shadow: 1px 1px 5px rgb(0, 0, 0);
+  border: none;
+}
+
+.modalWindow {
+}
