@@ -17,6 +17,7 @@ function App() {
   const [error, setError] = useState(false);
   const [imageModal, setImageModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [noResult, setNoResult] = useState(false);
 
   async function serchImage(useWord, currentPage) {
     try {
@@ -32,13 +33,21 @@ function App() {
       const url = `https://api.unsplash.com/search/photos?${serchParams}`;
 
       const response = await axios.get(url);
-      if (currentPage === 1) {
-        return setImages(response.data.results);
+      console.log(response.data.results);
+
+      if (response.data.results.length === 0) {
+        return setNoResult(true), setImages([]);
       }
+
+      if (currentPage === 1) {
+        return setImages(response.data.results), setNoResult(false);
+      }
+
       if (currentPage > 1) {
         setImages((prev) => {
           return [...prev, ...response.data.results];
-        });
+        }),
+          setNoResult(false);
       }
     } catch (error) {
       setError(true);
@@ -81,7 +90,9 @@ function App() {
       )}
       {loading && <Loading />}
       {images.length > 0 && <LoadMore moreBtn={moreBtn} />}
-
+      {noResult && (
+        <p className="error">No results were found for your request</p>
+      )}
       {selectedImage && (
         <ImageModal
           image={selectedImage}
